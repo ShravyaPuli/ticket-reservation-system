@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>Welcome to Indian Ticket Reservation System</h2>
+    <p>Book your train and bus tickets quickly and easily for travel throughout India.</p>
+    
+    <div class="home-options">
+        <div class="home-option card">
+            <h3>Train Tickets</h3>
+            <p>Book tickets for all major trains including Rajdhani, Shatabdi, Duronto, and more.</p>
+            <a href="{{ url_for('train_list') }}" class="btn">View Trains</a>
+        </div>
+        
+        <div class="home-option card">
+            <h3>Bus Tickets</h3>
+            <p>Book tickets for intercity buses including AC, Non-AC, Sleeper, and Seater options.</p>
+            <a href="{{ url_for('bus_list') }}" class="btn">View Buses</a>
+        </div>
+        
+        <div class="home-option card">
+            <h3>My Bookings</h3>
+            <p>View, manage or cancel your existing bookings using your booking ID.</p>
+            <a href="{{ url_for('my_bookings') }}" class="btn">Check Bookings</a>
+        </div>
+    </div>
+    
+    <div class="card" style="margin-top: 30px;">
+        <h3>Popular Routes</h3>
+        <ul>
+            <li>New Delhi to Mumbai</li>
+            <li>Chennai to Bangalore</li>
+            <li>Kolkata to Delhi</li>
+            <li>Hyderabad to Bangalore</li>
+            <li>Jaipur to Delhi</li>
+        </ul>
+    </div>
+</div>
+{% endblock %} 

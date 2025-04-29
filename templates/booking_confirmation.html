@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>Booking Confirmed!</h2>
+    <p>Your booking has been confirmed. Please save this information for future reference.</p>
+    
+    <div class="booking-confirmation">
+        <div class="booking-id">
+            Booking ID: {{ booking.booking_id }}
+        </div>
+        
+        <table>
+            <tr>
+                <th>Transport Type:</th>
+                <td>{% if booking.transport_type == 'train' %}Train{% else %}Bus{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Name:</th>
+                <td>{{ booking.transport.name }}</td>
+            </tr>
+            <tr>
+                <th>Route:</th>
+                <td>{{ booking.transport.source }} to {{ booking.transport.destination }}</td>
+            </tr>
+            <tr>
+                <th>Departure:</th>
+                <td>{{ booking.transport.departure }}</td>
+            </tr>
+            <tr>
+                <th>Arrival:</th>
+                <td>{{ booking.transport.arrival }}</td>
+            </tr>
+            <tr>
+                <th>Journey Date:</th>
+                <td>{{ booking.journey_date }}</td>
+            </tr>
+            <tr>
+                <th>Class:</th>
+                <td>{{ booking.class_type }}</td>
+            </tr>
+            <tr>
+                <th>Total Fare:</th>
+                <td>₹{{ booking.total_price }}</td>
+            </tr>
+            <tr>
+                <th>Booking Date:</th>
+                <td>{{ booking.booking_date }}</td>
+            </tr>
+            <tr>
+                <th>Status:</th>
+                <td><strong>{{ booking.status }}</strong></td>
+            </tr>
+        </table>
+        
+        <h3>Passenger Details</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Seat Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for passenger in booking.passengers %}
+                <tr>
+                    <td>{{ passenger.name }}</td>
+                    <td>{{ passenger.age }}</td>
+                    <td>{{ passenger.gender }}</td>
+                    <td>{{ passenger.seat_number }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <div style="margin-top: 20px; text-align: center;">
+            <p>Please arrive 30 minutes before departure time.</p>
+            <p>Show this e-ticket along with a valid ID proof during journey.</p>
+        </div>
+    </div>
+    
+    <div style="margin-top: 20px; text-align: center;">
+        <a href="{{ url_for('home') }}" class="btn">Back to Home</a>
+        <a href="{{ url_for('cancel_booking', booking_id=booking.booking_id) }}" class="btn btn-danger">Cancel Booking</a>
+    </div>
+</div>
+{% endblock %} 

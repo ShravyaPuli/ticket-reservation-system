@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>My Bookings</h2>
+    <p>Enter your booking ID to view or manage your booking.</p>
+    
+    <form action="{{ url_for('my_bookings') }}" method="post">
+        <div class="form-group">
+            <label for="booking_id">Booking ID:</label>
+            <input type="text" id="booking_id" name="booking_id" required placeholder="e.g., ABC12345">
+        </div>
+        
+        <div class="form-group">
+            <button type="submit" class="btn">Find Booking</button>
+        </div>
+    </form>
+    
+    <div class="card" style="margin-top: 30px;">
+        <h3>Lost your booking ID?</h3>
+        <p>If you've lost your booking ID, please note that since this is a demo application without a database or authentication system, we don't have a way to retrieve your booking.</p>
+        <p>In a real application, you would be able to retrieve your booking using:</p>
+        <ul>
+            <li>Your registered email address</li>
+            <li>Mobile number verification</li>
+            <li>Your account login</li>
+        </ul>
+    </div>
+</div>
+{% endblock %} 

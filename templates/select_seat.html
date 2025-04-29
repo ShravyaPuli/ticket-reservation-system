@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>Select Seat and Class</h2>
+    
+    <div class="card transport-item">
+        <h3>{{ transport.name }}</h3>
+        <p><strong>Route:</strong> {{ transport.source }} to {{ transport.destination }}</p>
+        <p><strong>Departure:</strong> {{ transport.departure }} | <strong>Arrival:</strong> {{ transport.arrival }}</p>
+        <p><strong>Base Fare:</strong> ₹{{ transport.price }}</p>
+    </div>
+    
+    <form action="{{ url_for('passenger_info', transport_type=transport_type, transport_id=transport.id) }}" method="post">
+        <div class="form-group">
+            <label for="class_type">Select Class:</label>
+            <select name="class_type" id="class_type" required>
+                <option value="">-- Select --</option>
+                {% for class_type in transport.class_types %}
+                <option value="{{ class_type }}">{{ class_type }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="seats">Number of Seats:</label>
+            <select name="seats" id="seats" required>
+                <option value="">-- Select --</option>
+                {% for i in range(1, 7) %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <button type="submit" class="btn">Continue to Passenger Details</button>
+        </div>
+    </form>
+</div>
+{% endblock %} 

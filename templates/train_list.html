@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>Available Trains</h2>
+    <p>Select a train to book tickets:</p>
+    
+    {% for train in trains %}
+    <div class="card transport-item">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h3>{{ train.name }}</h3>
+                <p><strong>Train No:</strong> {{ train.id }}</p>
+                <p><strong>Route:</strong> {{ train.source }} to {{ train.destination }}</p>
+                <p><strong>Departure:</strong> {{ train.departure }} | <strong>Arrival:</strong> {{ train.arrival }}</p>
+                <p><strong>Classes:</strong> {{ train.class_types|join(', ') }}</p>
+                <p><strong>Base Fare:</strong> ₹{{ train.price }}</p>
+            </div>
+            <div>
+                <a href="{{ url_for('select_seat', transport_type='train', transport_id=train.id) }}" class="btn">Book Now</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %} 
