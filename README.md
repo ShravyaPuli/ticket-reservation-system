@@ -23,7 +23,7 @@ A simple ticket reservation system built with Python and Flask, designed for boo
 
 1. Clone this repository or download the code
 2. Create a virtual environment:
-   ```
+   ```bash
    python -m venv venv
    ```
 3. Activate the virtual environment:
